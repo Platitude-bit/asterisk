@@ -1,2 +1,4 @@
 asterisk
 *.out
+*.txt
+*.sh
