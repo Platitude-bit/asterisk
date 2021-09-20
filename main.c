@@ -40,6 +40,7 @@ void enableRawMode() {
 
 /* print error message */
 void die(const char *s) {
+    editorRefreshScreen();
     perror(s);
     exit(1);
 }
@@ -59,6 +60,7 @@ void editorProcessKeyPress() {
     char c = editorReadKey();
 
     if(c == CTRL_KEY('q')) {
+        editorRefreshScreen();
         exit(0);
     }
 }
@@ -66,6 +68,7 @@ void editorProcessKeyPress() {
 /* refresh the screen */
 void editorRefreshScreen() {
     write(STDOUT_FILENO, "\x1b[2J", 4);
+    write(STDOUT_FILENO, "\x1b[H", 3);
 }
 
 
