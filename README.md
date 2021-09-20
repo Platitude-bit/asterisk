@@ -7,7 +7,7 @@ ASTERISK
 
 ### TODO: 
 
-- [] Fix Text Input
-- [] Fix Window sizing
-- [] Add Save Functionality
-- [] Add Colorschemes
+- [ ] Fix Text Input
+- [ ] Fix Window sizing
+- [ ] Add Save Functionality
+- [ ] Add Colorschemes
