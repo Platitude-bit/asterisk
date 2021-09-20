@@ -16,3 +16,4 @@ void die(const char *s);
 char editorReadKey();
 void editorProcessKeyPress();
 void editorRefreshScreen();
+void editorDrawRows();
