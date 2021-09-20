@@ -45,10 +45,10 @@ void die(const char *s) {
 }
 
 /* Keyboard input */
-void editorReadKey() {
+char editorReadKey() {
     int reader;
     char c;
-    while((reader == read(STDIN_FILENO, &c, 1)) != 1) {
+    while((reader = read(STDIN_FILENO, &c, 1)) != 1) {
         if(reader == -1 && errno != EAGAIN)
             die("read");
     }
@@ -60,10 +60,10 @@ void editorProcessKeyPress() {
 
     if(c == CTRL_KEY('q')) {
         exit(0);
-        break;
     }
 }
 
+/* refresh the screen */
 void editorRefreshScreen() {
     write(STDOUT_FILENO, "\x1b[2J", 4);
 }
