@@ -12,3 +12,4 @@ void enableRawMode();
 void die(const char *s);
 void editorReadKey();
 void editorProcessKeyPress();
+void editorRefreshScreen();
