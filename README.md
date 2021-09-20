@@ -5,3 +5,9 @@ ASTERISK
 
 + Features soon.
 
+### TODO: 
+
+- [] Fix Text Input
+- [] Fix Window sizing
+- [] Add Save Functionality
+- [] Add Colorschemes
