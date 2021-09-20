@@ -11,3 +11,4 @@ struct termios orig_termios;
 void disableRawMode();
 void enableRawMode();
 void die(const char *s);
+void editorReadKey();

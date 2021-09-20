@@ -16,7 +16,7 @@ int main() {
             printf("%d ('%c')\r\n", c, c);
         }
 
-        if(c == 'q')
+        if(c == CTRL_KEY('q'))
             break;
     }
 
@@ -55,4 +55,15 @@ void enableRawMode() {
 void die(const char *s) {
     perror(s);
     exit(1);
+}
+
+/* Keyboard input */
+void editorReadKey() {
+    int reader;
+    char c;
+    while((reader == read(STDIN_FILENO, &c, 1)) != 1) {
+        if(reader == -1 && errno != EAGAIN)
+            die("read");
+    }
+    return c;
 }
