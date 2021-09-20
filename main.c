@@ -2,6 +2,7 @@
 
 int main() {
     enableRawMode();
+    initEditor();
 
     while(1) {
         editorRefreshScreen();
@@ -12,18 +13,18 @@ int main() {
 
 /* exit raw mode */
 void disableRawMode() {
-    if(tcsetattr(STDIN_FILENO, TCSAFLUSH, &orig_termios) == -1)
+    if(tcsetattr(STDIN_FILENO, TCSAFLUSH, &editConf.orig_termios) == -1)
         die("tcsetattr");
 }
 
 /* enter raw mode */
 void enableRawMode() {
-    if(tcgetattr(STDIN_FILENO, &orig_termios) == - 1)
+    if(tcgetattr(STDIN_FILENO, &editConf.orig_termios) == - 1)
         die("tcgetattr");
 
     atexit(disableRawMode);
 
-    struct termios raw = orig_termios;
+    struct termios raw = editConf.orig_termios;
 
     raw.c_iflag &= ~(BRKINT | ICRNL | INPCK | ISTRIP | IXON); 
     raw.c_oflag &= ~(OPOST);
@@ -77,29 +78,30 @@ void editorRefreshScreen() {
 /* draw rows of '+' */
 void editorDrawRows() {
     for(int h=0;h<30;++h) {
-        write(STDIN_FILENO, "+\r\n", 3);
+        write(STDIN_FILENO, "-\r\n", 3);
     }
 }
-    
 
+int getWindowSize(int *rows, int *cols) {
 
+    struct winsize ws;
 
+    if(ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws) == -1 || ws.ws_col == 0) {
+        return -1;
+    }
 
+    else {
+        *cols = ws.ws_col;
+        *rows = ws.ws_row;
+        return 0;
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* initialize all fields in struct editConf */
+void initEditor() {
+    if(getWindowSize(&editConf.scrRows, &editConf.scrCols) == -1) 
+        die("getWindowSize");
+}
+        
 
 
