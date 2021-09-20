@@ -67,3 +67,12 @@ void editorReadKey() {
     }
     return c;
 }
+
+void editorProcessKeyPress() {
+    char c = editorReadKey();
+
+    if(c == CTRL_KEY('q')) {
+        exit(0);
+        break;
+    }
+}
