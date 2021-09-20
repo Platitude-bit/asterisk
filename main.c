@@ -75,9 +75,9 @@ void editorRefreshScreen() {
     write(STDOUT_FILENO, "\x1b[H", 3);
 }
 
-/* draw rows of '+' */
+/* draw rows of '-' */
 void editorDrawRows() {
-    for(int h=0;h<30;++h) {
+    for(int h=0;h<editConf.scrRows;++h) {
         write(STDIN_FILENO, "-\r\n", 3);
     }
 }
