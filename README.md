@@ -1,7 +1,7 @@
 ASTERISK
 ========
 
-### Asterisk is a text editor writter in C. 
+### Asterisk is a text editor written in C. 
 
 + Features soon.
 
