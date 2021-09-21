@@ -79,6 +79,9 @@ void editorRefreshScreen() {
 void editorDrawRows() {
     for(int h=0;h<editConf.scrRows;++h) {
         write(STDIN_FILENO, "-\r\n", 3);
+
+        if(h < editConf.scrRows - 1) 
+            write(STDOUT_FILENO, "\r\n", 2);
     }
 }
 
@@ -114,7 +117,7 @@ int getWindowSize(int *rows, int *cols) {
 
     struct winsize ws;
 
-    if(1 || ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws) == -1 || ws.ws_col == 0) {
+    if(ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws) == -1 || ws.ws_col == 0) {
         if(write(STDOUT_FILENO, "\x1b[999C\x1b[999B", 12) != 12) 
             return -1;
 
