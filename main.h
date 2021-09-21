@@ -19,7 +19,7 @@ struct editorConfig {
 struct appBuff {
     char *b;
     int len;
-}
+};
 
 struct editorConfig editConf;
 
