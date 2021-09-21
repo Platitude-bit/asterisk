@@ -25,4 +25,5 @@ void editorProcessKeyPress();
 void editorRefreshScreen();
 void editorDrawRows();
 int getWindowSize(int *, int *);
+int getCursorPos(int *, int *);
 void initEditor();
