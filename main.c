@@ -105,7 +105,6 @@ int getCursorPos(int *rows, int *cols) {
     if(sscanf(&buf[2], "%d;%d", rows, cols) != 2)
         return -1;
 
-    editorReadKey();
 
     return -1;
 }
