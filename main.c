@@ -78,7 +78,7 @@ void editorRefreshScreen() {
 /* draw rows of '-' */
 void editorDrawRows() {
     for(int h=0;h<editConf.scrRows;++h) {
-        write(STDIN_FILENO, "-\r\n", 3);
+        write(STDIN_FILENO, "~", 1);
 
         if(h < editConf.scrRows - 1) 
             write(STDOUT_FILENO, "\r\n", 2);
