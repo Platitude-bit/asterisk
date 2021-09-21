@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -15,7 +16,13 @@ struct editorConfig {
     struct termios orig_termios;
 };
 
+struct appBuff {
+    char *b;
+    int len;
+}
+
 struct editorConfig editConf;
+
 
 void disableRawMode();
 void enableRawMode();
