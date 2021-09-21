@@ -82,6 +82,7 @@ void editorDrawRows() {
     }
 }
 
+/* return position of the cursor */
 int getCursorPos(int *rows, int *cols) {
     char buf[32];
     unsigned int i = 0;
@@ -105,6 +106,7 @@ int getCursorPos(int *rows, int *cols) {
     return -1;
 }
 
+/* return the size of the window */
 int getWindowSize(int *rows, int *cols) {
 
     struct winsize ws;
