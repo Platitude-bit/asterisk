@@ -8,6 +8,7 @@
 #include <sys/ioctl.h>
 
 #define CTRL_KEY(k) ((k) & 0x1f)
+#define ABUF_INIT {NULL, 0}
 
 /* data */
 struct editorConfig {
@@ -34,3 +35,5 @@ void editorDrawRows();
 int getWindowSize(int *, int *);
 int getCursorPos(int *, int *);
 void initEditor();
+void buffAppend(struct appBuff *app, const char *s, int len);
+void buffFree(struct appBuff *app);

@@ -139,6 +139,22 @@ void initEditor() {
     if(getWindowSize(&editConf.scrRows, &editConf.scrCols) == -1) 
         die("getWindowSize");
 }
+
+void buffAppend(struct appBuff *app, const char *s, int len) {
+    char *new = realloc(app->b, app->len + len);
+
+    if(new == NULL) 
+        return;
+
+    memcpy(&new[app->len], s, len);
+    app->b = new;
+    app->len += len;
+}
+
+void buffFree(struct appBuff *app) {
+    free(app->b);
+}
+
         
 
 
