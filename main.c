@@ -85,6 +85,10 @@ void editorRefreshScreen() {
 /* draw rows of '~' */
 void editorDrawRows(struct appBuff *app) {
     for(int h=0;h<editConf.scrRows;++h) {
+        if(h == editConf.scrRows / 3) {
+            char welcome[100];
+            int msgLen = snprintf(welcome, sizeof(welcome),
+            "*** THE ASTERISK EDITOR *** ver. %s", ASTERIKS_VER);
         buffAppend(app, "~", 1);
         buffAppend(app, "\x1b[K", 3);
 
