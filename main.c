@@ -68,20 +68,24 @@ void editorProcessKeyPress() {
 
 /* refresh the screen */
 void editorRefreshScreen() {
-    write(STDOUT_FILENO, "\x1b[2J", 4);
-    write(STDOUT_FILENO, "\x1b[H", 3);
+    struct appBuff app = ABUF_INIT;
 
-    editorDrawRows();
-    write(STDOUT_FILENO, "\x1b[H", 3);
+    buffAppend(&app, "\x1b[2J", 4);
+    buffAppend(&app, "\x1b[H", 3);
+
+    editorDrawRows(&app);
+    buffAppend(&app, "\x1b[H", 3);
+    write(STDOUT_FILENO, app.b, app.len);
+    buffFree(&app);
 }
 
 /* draw rows of '-' */
-void editorDrawRows() {
+void editorDrawRows(struct appBuff *app) {
     for(int h=0;h<editConf.scrRows;++h) {
-        write(STDIN_FILENO, "~", 1);
+        buffAppend(app, "~", 1);
 
         if(h < editConf.scrRows - 1) 
-            write(STDOUT_FILENO, "\r\n", 2);
+            buffAppend(app, "~", 2);
     }
 }
 
@@ -155,6 +159,5 @@ void buffFree(struct appBuff *app) {
     free(app->b);
 }
 
-        
 
 

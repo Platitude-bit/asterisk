@@ -31,7 +31,7 @@ void die(const char *s);
 char editorReadKey();
 void editorProcessKeyPress();
 void editorRefreshScreen();
-void editorDrawRows();
+void editorDrawRows(struct appBuff *app);
 int getWindowSize(int *, int *);
 int getCursorPos(int *, int *);
 void initEditor();
