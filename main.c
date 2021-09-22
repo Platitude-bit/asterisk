@@ -70,11 +70,15 @@ void editorProcessKeyPress() {
 void editorRefreshScreen() {
     struct appBuff app = ABUF_INIT;
 
+
+    buffAppend(&app, "\x1b[?25l", 6);
     buffAppend(&app, "\x1b[2J", 4);
     buffAppend(&app, "\x1b[H", 3);
 
     editorDrawRows(&app);
     buffAppend(&app, "\x1b[H", 3);
+    buffAppend(&app, "\x1b[?25h", 6);
+
     write(STDOUT_FILENO, app.b, app.len);
     buffFree(&app);
 }
