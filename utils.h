@@ -1,3 +1,4 @@
+/* libs */
 #include <ctype.h>
 #include <string.h>
 #include <stdio.h>
@@ -7,8 +8,10 @@
 #include <errno.h>
 #include <sys/ioctl.h>
 
+/* macros */
 #define CTRL_KEY(k) ((k) & 0x1f)
 #define ABUF_INIT {NULL, 0}
+#define ASTERIKS_VER "0.0.1"
 
 /* data */
 struct editorConfig {
