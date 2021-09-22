@@ -3,11 +3,11 @@ ASTERISK
 
 ### Asterisk is a text editor written in C. 
 
-+ Features soon.
++ Features to be announced soon.
 
 ### TODO: 
 
-- [ ] Fix Text Input
-- [ ] Fix Window sizing
+- [ ] Add Text Input
+- [x] Fix Window sizing
 - [ ] Add Save Functionality
 - [ ] Add Colorschemes
