@@ -84,16 +84,33 @@ void editorRefreshScreen() {
 
 /* draw rows of '~' */
 void editorDrawRows(struct appBuff *app) {
+
     for(int h=0;h<editConf.scrRows;++h) {
         if(h == editConf.scrRows / 3) {
-            char welcome[100];
+            char welcome[80];
             int msgLen = snprintf(welcome, sizeof(welcome),
-            "*** THE ASTERISK EDITOR *** ver. %s", ASTERIKS_VER);
-        buffAppend(app, "~", 1);
-        buffAppend(app, "\x1b[K", 3);
+            "*** THE ASTERISK TEXT-EDITOR *** ver. %s", ASTERIKS_VER); 
+            if(msgLen > editConf.scrCols) 
+                msgLen = editConf.scrCols;
+            int padding = (editConf.scrCols - msgLen) / 2;
+            if(padding != 0) {
+                buffAppend(app, "~", 1);
+                padding--;
+            }
+            while(padding--)
+                buffAppend(app, " ", 1);
+            buffAppend(app, welcome, msgLen);
 
-        if(h < editConf.scrRows - 1) 
+        }
+
+        else {
+            buffAppend(app, "~", 1);
+        }
+
+        buffAppend(app, "\x1b[K", 3);
+        if(h < editConf.scrRows - 1) {
             buffAppend(app, "\r\n", 2);
+        }
     }
 }
 

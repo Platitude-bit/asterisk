@@ -27,16 +27,16 @@ struct appBuff {
 
 struct editorConfig editConf;
 
-
+/* function prototypes */
 void disableRawMode();
 void enableRawMode();
 void die(const char *s);
-char editorReadKey();
 void editorProcessKeyPress();
 void editorRefreshScreen();
 void editorDrawRows(struct appBuff *app);
-int getWindowSize(int *, int *);
-int getCursorPos(int *, int *);
 void initEditor();
 void buffAppend(struct appBuff *app, const char *s, int len);
 void buffFree(struct appBuff *app);
+char editorReadKey();
+int getWindowSize(int *, int *);
+int getCursorPos(int *, int *);
