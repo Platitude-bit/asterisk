@@ -85,7 +85,7 @@ void editorDrawRows(struct appBuff *app) {
         buffAppend(app, "~", 1);
 
         if(h < editConf.scrRows - 1) 
-            buffAppend(app, "~", 2);
+            buffAppend(app, "\r\n", 2);
     }
 }
 
