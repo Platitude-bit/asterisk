@@ -72,7 +72,6 @@ void editorRefreshScreen() {
 
 
     buffAppend(&app, "\x1b[?25l", 6);
-    buffAppend(&app, "\x1b[2J", 4);
     buffAppend(&app, "\x1b[H", 3);
 
     editorDrawRows(&app);
@@ -83,10 +82,11 @@ void editorRefreshScreen() {
     buffFree(&app);
 }
 
-/* draw rows of '-' */
+/* draw rows of '~' */
 void editorDrawRows(struct appBuff *app) {
     for(int h=0;h<editConf.scrRows;++h) {
         buffAppend(app, "~", 1);
+        buffAppend(app, "\x1b[K", 3);
 
         if(h < editConf.scrRows - 1) 
             buffAppend(app, "\r\n", 2);
