@@ -64,6 +64,9 @@ void editorProcessKeyPress() {
         editorRefreshScreen();
         exit(0);
     }
+
+    else if(c == 'h' || c == 'j' || c == 'k' || c == 'l')
+        editorMoveCursor(c);
 }
 
 /* refresh the screen */
@@ -129,10 +132,10 @@ void editorMoveCursor(char k) {
             editConf.curX++;
             break;
         case 'j':
-            editConf.curY--;
+            editConf.curY++;
             break;
         case 'k':
-            editConf.curY++;
+            editConf.curY--;
             break;
     }
 }
