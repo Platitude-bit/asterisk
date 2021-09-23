@@ -32,12 +32,17 @@ struct editorConfig editConf;   /* struct for terminal window size
 void disableRawMode();
 void enableRawMode();
 void die(const char *s);
+
 void editorProcessKeyPress();
 void editorRefreshScreen();
 void editorDrawRows(struct appBuff *app);
+void editorMoveCursor(char);
+char editorReadKey();
+
 void initEditor();
+
 void buffAppend(struct appBuff *app, const char *s, int len);
 void buffFree(struct appBuff *app);
-char editorReadKey();
+
 int getWindowSize(int *, int *);
 int getCursorPos(int *, int *);

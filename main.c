@@ -119,6 +119,24 @@ void editorDrawRows(struct appBuff *app) {
     }
 }
 
+/* move the cursor using vim-like keys */
+void editorMoveCursor(char k) {
+    switch(k) {
+        case 'h':
+            editConf.curX--;
+            break;
+        case 'l':
+            editConf.curX++;
+            break;
+        case 'j':
+            editConf.curY--;
+            break;
+        case 'k':
+            editConf.curY++;
+            break;
+    }
+}
+
 /* return position of the cursor */
 int getCursorPos(int *rows, int *cols) {
     char buf[32];
