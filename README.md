@@ -5,6 +5,8 @@ ASTERISK
 
 + Features to be announced soon.
 
+## Want to use it yourself? Simply run make!
+
 ### TODO: 
 
 - [ ] Add Text Input
