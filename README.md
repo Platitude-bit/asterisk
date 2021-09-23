@@ -11,3 +11,4 @@ ASTERISK
 - [x] Fix Window sizing
 - [ ] Add Save Functionality
 - [ ] Add Colorschemes
+- [ ] Add Syntax Highlighting for C files
