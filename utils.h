@@ -9,14 +9,14 @@
 #include <sys/ioctl.h>
 
 /* macros */
-#define CTRL_KEY(k) ((k) & 0x1f)
-#define ABUF_INIT {NULL, 0}
-#define ASTERIKS_VER "0.0.1"
+#define CTRL_KEY(k) ((k) & 0x1f)    
+#define ABUF_INIT {NULL, 0}         // constructor for the append buffer
+#define ASTERIKS_VER "0.0.1"        // editor version 
 
 /* data */
 struct editorConfig {
-    int scrRows;
-    int scrCols;
+    int curX, curY;
+    int scrRows, scrCols;
     struct termios orig_termios;
 };
 
@@ -25,7 +25,8 @@ struct appBuff {
     int len;
 };
 
-struct editorConfig editConf;
+struct editorConfig editConf;   /* struct for terminal window size 
+                                    and other terminal attributes */
 
 /* function prototypes */
 void disableRawMode();

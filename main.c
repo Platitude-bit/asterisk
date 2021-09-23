@@ -75,7 +75,12 @@ void editorRefreshScreen() {
     buffAppend(&app, "\x1b[H", 3);
 
     editorDrawRows(&app);
-    buffAppend(&app, "\x1b[H", 3);
+
+    char buf[32];
+    snprintf(buf, sizeof(buf), "\x1b[%d;%dH", editConf.curY + 1, editConf.curX + 1);
+    buffAppend(&app, buf, strlen(buf));
+
+    //buffAppend(&app, "\x1b[H", 3);
     buffAppend(&app, "\x1b[?25h", 6);
 
     write(STDOUT_FILENO, app.b, app.len);
@@ -165,6 +170,8 @@ int getWindowSize(int *rows, int *cols) {
 
 /* initialize all fields in struct editConf */
 void initEditor() {
+    editConf.curX = 0;
+    editConf.curY = 0;
     if(getWindowSize(&editConf.scrRows, &editConf.scrCols) == -1) 
         die("getWindowSize");
 }
