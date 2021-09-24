@@ -15,10 +15,10 @@
 
 /* enums */
 enum editorKeys {
-    ARROW_UP = 'k';
-    ARROW_DOWN = 'j';
-    ARROW_RIGHT = 'l';
-    ARROW_LEFT = 'h';
+    ARROW_UP = 'k',
+    ARROW_DOWN = 'j',
+    ARROW_RIGHT = 'l',
+    ARROW_LEFT = 'h'
 };
 
 /* data */
