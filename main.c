@@ -1,5 +1,6 @@
 #include "utils.h"
 
+/* execute */
 int main() {
     enableRawMode();
     initEditor();
@@ -57,6 +58,7 @@ char editorReadKey() {
     return c;
 }
 
+/* process keys as they are pressed*/
 void editorProcessKeyPress() {
     char c = editorReadKey();
 
@@ -90,7 +92,7 @@ void editorRefreshScreen() {
     buffFree(&app);
 }
 
-/* draw rows of '~' */
+/* draw rows of '~' and print welcome message */
 void editorDrawRows(struct appBuff *app) {
 
     for(int h=0;h<editConf.scrRows;++h) {
@@ -197,6 +199,7 @@ void initEditor() {
         die("getWindowSize");
 }
 
+/* append to the append buffer */
 void buffAppend(struct appBuff *app, const char *s, int len) {
     char *new = realloc(app->b, app->len + len);
 
@@ -208,9 +211,7 @@ void buffAppend(struct appBuff *app, const char *s, int len) {
     app->len += len;
 }
 
+/* free the mem of buffer */
 void buffFree(struct appBuff *app) {
     free(app->b);
 }
-
-
-
