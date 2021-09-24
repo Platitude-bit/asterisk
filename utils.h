@@ -13,6 +13,14 @@
 #define ABUF_INIT {NULL, 0}         // constructor for the append buffer
 #define ASTERIKS_VER "0.0.1"        // editor version 
 
+/* enums */
+enum editorKeys {
+    ARROW_UP = 'k';
+    ARROW_DOWN = 'j';
+    ARROW_RIGHT = 'l';
+    ARROW_LEFT = 'h';
+};
+
 /* data */
 struct editorConfig {
     int curX, curY;

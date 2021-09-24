@@ -51,11 +51,37 @@ void die(const char *s) {
 char editorReadKey() {
     int reader;
     char c;
+
     while((reader = read(STDIN_FILENO, &c, 1)) != 1) {
         if(reader == -1 && errno != EAGAIN)
             die("read");
     }
-    return c;
+
+    if(c == '\x1b') {
+        char tmp[3];
+
+        if(read(STDIN_FILENO, &tmp[0], 1) != 1)
+            return '\x1b';
+
+        if(read(STDIN_FILENO, &tmp[1], 1) != 1)
+            return '\x1b';
+
+        if(tmp[0] == '[') {
+            switch(tmp[1]) {
+                case 'A': return ARROW_UP;
+                case 'B': return ARROW_DOWN;
+                case 'C': return ARROW_RIGHT;
+                case 'D': return ARROW_LEFT;
+            }
+        }
+
+        return '\x1b';
+    }
+
+    else {
+        return c;
+    }
+
 }
 
 /* process keys as they are pressed*/
