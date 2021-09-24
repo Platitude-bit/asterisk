@@ -47,7 +47,7 @@ void die(const char *s) {
     exit(1);
 }
 
-/* Keyboard input */
+/* read in keyboard input */
 char editorReadKey() {
     int reader;
     char c;
